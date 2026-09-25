@@ -1,0 +1,129 @@
+<!-- 
+Агай, это мой комментарий вам.
+В сайте у меня в цикле слуг отображаются только фотки, а текста нету,
+а еще дизайн как-то странно работает, 
+я все подключил праильно(load static и ссылки на ccs, js)
+(несколько раз проверил), но все равно css, js файлы работают неправильно
+но весь код я написал правильно. Проверьте мой сайт и увидите
+А таком в целом админка, моделька и другое работают отлично
+-->
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AUREUM Motors — Премиальный автосалон в Бишкеке</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <!-- HEADER -->
+    {% include 'header.html' %}
+
+    <main>
+        <!-- HERO -->
+        <section class="hero" data-reveal>
+            <div class="hero__bg"></div>
+            <div class="hero__inner">
+                <div class="hero__content">
+                    <span class="badge">★ Официальный дилер премиум-класса</span>
+                    <h1 class="hero__title">Найди свой<br><span>идеальный</span> автомобиль</h1>
+                    <p class="hero__text">Более 200 проверенных автомобилей в наличии. Тест-драйв, trade-in и кредит за один визит. Гарантия на каждую машину.</p>
+                    <div class="hero__actions">
+                        <a href="{% url 'catalog-page' %}" class="btn btn--primary">Смотреть каталог</a>
+                        <a href="{% url 'catalog-page' %}#order" class="btn btn--ghost">Записаться на тест-драйв</a>
+                    </div>
+                    <div class="hero__stats">
+                        <div class="stat"><b>15</b><span>лет на рынке</span></div>
+                        <div class="stat"><b>200+</b><span>авто в наличии</span></div>
+                        <div class="stat"><b>4 800</b><span>довольных клиентов</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MODELS -->
+        <section class="section" id="models">
+            <div class="container">
+                <div class="section__head" data-reveal>
+                    <span class="section__label">Витрина</span>
+                    <h2 class="section__title">Популярные модели</h2>
+                    <p class="section__sub">Подобрали автомобили, которые выбирают чаще всего</p>
+                </div>
+
+                <div class="cards">
+
+                    {% for i in service %}
+                    <article class="card" data-reveal>
+                        <div class="card__media">
+                            <img src="{{ i.image.url }}">
+                            <span class="card__tag">В наличии</span>
+                        </div>
+                        <div class="card__body">
+                            <div class="card__top">
+                                <h3 class="card__title">{{ i.title }}</h3>
+                                <span class="card__price">{{ i.price }}</span>
+                            </div>
+                            <ul class="card__specs">{{ i.description }}</ul>
+                            <a href="{% url 'catalog-page' %}#order" class="btn btn--block">Узнать подробнее</a>
+                        </div>
+                    </article>
+                    {% endfor %}
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section class="section--alt" id="about">
+            <div class="about">
+                <div class="about__media" data-reveal>
+                    <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=900&q=80" alt="Шоурум AUREUM Motors">
+                </div>
+                <div class="about__content" data-reveal>
+                    <span class="section__label">Почему мы</span>
+                    <h2 class="section__title">Покупка авто без рисков и нервов</h2>
+                    <p class="section__sub">Каждый автомобиль проходит 120-точечную проверку. Вы получаете полную историю и юридическую чистоту сделки.</p>
+                    <div class="features">
+                        <div class="feature">
+                            <div class="feature__icon">✓</div>
+                            <div><h4>Проверенная история</h4><p>Полный отчёт по VIN и сервисной книжке</p></div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature__icon">⚡</div>
+                            <div><h4>Кредит за 15 минут</h4><p>Одобрение от 6 банков-партнёров</p></div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature__icon">↻</div>
+                            <div><h4>Trade-in</h4><p>Обмен вашего авто по честной цене</p></div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature__icon">★</div>
+                            <div><h4>Гарантия</h4><p>До 2 лет на двигатель и КПП</p></div>
+                        </div>
+                    </div>
+                    <a href="{% url 'catalog-page' %}" class="btn btn--primary">Перейти в каталог</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta">
+            <div class="container cta__inner" data-reveal>
+                <h2>Готовы выбрать автомобиль мечты?</h2>
+                <p>Оставьте заявку — менеджер подберёт варианты под ваш бюджет за 30 минут.</p>
+                <a href="{% url 'catalog-page' %}#order" class="btn btn--primary btn--lg">Оставить заявку</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    {% include 'footer.html' %}
+
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

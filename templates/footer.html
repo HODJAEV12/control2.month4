@@ -1,0 +1,28 @@
+{% load static %}
+<footer class="footer">
+    <div class="container footer__inner">
+        <div class="footer__col">
+            <a href="{% url 'index-page' %}" class="logo">
+                <span class="logo__mark">◆</span>
+                <span class="logo__text">AUREUM<span>MOTORS</span></span>
+            </a>
+            <p class="footer__desc">Премиальный автосалон с 2009 года. Эксклюзивные автомобили, прозрачные сделки, сервис мирового уровня.</p>
+        </div>
+        <div class="footer__col">
+            <h4 class="footer__title">Навигация</h4>
+            <a href="{% url 'index-page' %}l#models">Модели</a>
+            <a href="{% url 'catalog-page' %}">Каталог</a>
+            <a href="#order">Заявка</a>
+        </div>
+        <div class="footer__col">
+            <h4 class="footer__title">Контакты</h4>
+            <a href="tel:+996700112233">{{ company.phone }}</a>
+            <a href="mailto:sales@aureum.motors">{{ company.email }}</a>
+            <p>{{ company.address }}</p>
+        </div>
+    </div>
+    <div class="container footer__bottom">
+        <span>© 2026 AUREUM Motors. Все права защищены.</span>
+        <span>Сделано с заботой о деталях</span>
+    </div>
+</footer>

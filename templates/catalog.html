@@ -1,0 +1,205 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог автомобилей — AUREUM Motors</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <!-- HEADER -->
+    {% include 'header.html' %}
+
+    <main>
+        <!-- PAGE HEAD -->
+        <section class="pagehead">
+            <div class="container">
+                <span class="badge">Каталог · 6 автомобилей в наличии</span>
+                <h1 class="pagehead__title">Каталог автомобилей</h1>
+                <p class="pagehead__sub">Выберите автомобиль и оставьте заявку — мы организуем тест-драйв в удобное время.</p>
+            </div>
+        </section>
+
+        <!-- FILTERS -->
+        <section class="filters">
+            <div class="filters__inner">
+                <button class="chip chip--active" data-filter="all">Все</button>
+                <button class="chip" data-filter="suv">Внедорожники</button>
+                <button class="chip" data-filter="sedan">Седаны</button>
+                <button class="chip" data-filter="electric">Электро</button>
+            </div>
+        </section>
+
+        <!-- CATALOG GRID -->
+        <section class="section--tight">
+            <div class="container">
+                <div class="cards" id="catalog-grid">
+
+                    <article class="card" data-category="suv" data-reveal>
+                        <div class="card__media">
+                            <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=800&q=80" alt="Mercedes-Benz GLE">
+                            <span class="card__tag">В наличии</span>
+                        </div>
+                        <div class="card__body">
+                            <div class="card__top"><h3 class="card__title">Mercedes-Benz GLE</h3><span class="card__price">$72 900</span></div>
+                            <ul class="card__specs"><li>2024</li><li>367 л.с.</li><li>4MATIC</li></ul>
+                            <a href="#order" class="btn btn--block js-pick" data-car="Mercedes-Benz GLE">Оставить заявку</a>
+                        </div>
+                    </article>
+
+                    <article class="card" data-category="suv" data-reveal>
+                        <div class="card__media">
+                            <img src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&w=800&q=80" alt="BMW X6 M">
+                            <span class="card__tag">Хит</span>
+                        </div>
+                        <div class="card__body">
+                            <div class="card__top"><h3 class="card__title">BMW X6 M</h3><span class="card__price">$98 500</span></div>
+                            <ul class="card__specs"><li>2024</li><li>530 л.с.</li><li>xDrive</li></ul>
+                            <a href="#order" class="btn btn--block js-pick" data-car="BMW X6 M">Оставить заявку</a>
+                        </div>
+                    </article>
+
+                    <article class="card" data-category="electric" data-reveal>
+                        <div class="card__media">
+                            <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80" alt="Porsche Taycan">
+                            <span class="card__tag">Новинка</span>
+                        </div>
+                        <div class="card__body">
+                            <div class="card__top"><h3 class="card__title">Porsche Taycan</h3><span class="card__price">$115 000</span></div>
+                            <ul class="card__specs"><li>2025</li><li>625 л.с.</li><li>Electric</li></ul>
+                            <a href="#order" class="btn btn--block js-pick" data-car="Porsche Taycan">Оставить заявку</a>
+                        </div>
+                    </article>
+
+                    <article class="card" data-category="sedan" data-reveal>
+                        <div class="card__media">
+                            <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80" alt="Audi A7">
+                            <span class="card__tag">В наличии</span>
+                        </div>
+                        <div class="card__body">
+                            <div class="card__top"><h3 class="card__title">Audi A7 Sportback</h3><span class="card__price">$68 400</span></div>
+                            <ul class="card__specs"><li>2023</li><li>340 л.с.</li><li>quattro</li></ul>
+                            <a href="#order" class="btn btn--block js-pick" data-car="Audi A7 Sportback">Оставить заявку</a>
+                        </div>
+                    </article>
+
+                    <article class="card" data-category="electric" data-reveal>
+                        <div class="card__media">
+                            <img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&w=800&q=80" alt="Tesla Model S">
+                            <span class="card__tag">Электро</span>
+                        </div>
+                        <div class="card__body">
+                            <div class="card__top"><h3 class="card__title">Tesla Model S Plaid</h3><span class="card__price">$104 200</span></div>
+                            <ul class="card__specs"><li>2024</li><li>1020 л.с.</li><li>AWD</li></ul>
+                            <a href="#order" class="btn btn--block js-pick" data-car="Tesla Model S Plaid">Оставить заявку</a>
+                        </div>
+                    </article>
+
+                    <article class="card" data-category="sedan" data-reveal>
+                        <div class="card__media">
+                            <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=800&q=80" alt="BMW 5 series">
+                            <span class="card__tag">Trade-in</span>
+                        </div>
+                        <div class="card__body">
+                            <div class="card__top"><h3 class="card__title">BMW 530i M Sport</h3><span class="card__price">$59 900</span></div>
+                            <ul class="card__specs"><li>2023</li><li>252 л.с.</li><li>RWD</li></ul>
+                            <a href="#order" class="btn btn--block js-pick" data-car="BMW 530i M Sport">Оставить заявку</a>
+                        </div>
+                    </article>
+
+                </div>
+                <p class="empty" id="empty" hidden>В этой категории пока нет автомобилей.</p>
+            </div>
+        </section>
+
+        <!-- ORDER FORM -->
+        <section class="section--alt" id="order">
+            <div class="order">
+                <div class="order__info" data-reveal>
+                    <span class="section__label">Заявка</span>
+                    <h2 class="section__title">Оставьте заявку на автомобиль</h2>
+                    <p class="section__sub">Заполните форму — менеджер свяжется с вами в течение 15 минут и согласует тест-драйв.</p>
+                    <ul class="order__list">
+                        <li><span>✓</span> Бесплатная консультация</li>
+                        <li><span>✓</span> Подбор по бюджету</li>
+                        <li><span>✓</span> Расчёт кредита и trade-in</li>
+                    </ul>
+                    <div class="order__contacts">
+                        <a href="tel:+996700112233">+996 (700) 11-22-33</a>
+                        <a href="mailto:sales@aureum.motors">sales@aureum.motors</a>
+                    </div>
+                </div>
+
+                <form class="form" id="order-form" novalidate>
+                    <div class="form__row">
+                        <label class="field">
+                            <span>Ваше имя *</span>
+                            <input type="text" name="name" placeholder="Иван Иванов" required>
+                            <em class="field__error">Введите имя</em>
+                        </label>
+                        <label class="field">
+                            <span>Телефон *</span>
+                            <input type="tel" name="phone" placeholder="+996 (___) __-__-__" required>
+                            <em class="field__error">Введите корректный телефон</em>
+                        </label>
+                    </div>
+
+                    <div class="form__row">
+                        <label class="field">
+                            <span>Email</span>
+                            <input type="email" name="email" placeholder="you@mail.com">
+                            <em class="field__error">Проверьте email</em>
+                        </label>
+                        <label class="field">
+                            <span>Интересующий автомобиль</span>
+                            <select name="car" id="car-select">
+                                <option value="">— Выберите модель —</option>
+                                <option>Mercedes-Benz GLE</option>
+                                <option>BMW X6 M</option>
+                                <option>Porsche Taycan</option>
+                                <option>Audi A7 Sportback</option>
+                                <option>Tesla Model S Plaid</option>
+                                <option>BMW 530i M Sport</option>
+                            </select>
+                            <em class="field__error"></em>
+                        </label>
+                    </div>
+
+                    <fieldset class="field--radio">
+                        <span>Удобный способ связи</span>
+                        <div class="radios">
+                            <label><input type="radio" name="contact" value="phone" checked><i></i>Звонок</label>
+                            <label><input type="radio" name="contact" value="whatsapp"><i></i>WhatsApp</label>
+                            <label><input type="radio" name="contact" value="email"><i></i>Email</label>
+                        </div>
+                    </fieldset>
+
+                    <label class="field">
+                        <span>Комментарий</span>
+                        <textarea name="message" rows="4" placeholder="Например: интересует тест-драйв в субботу"></textarea>
+                    </label>
+
+                    <label class="checkbox">
+                        <input type="checkbox" name="agree" required>
+                        <i></i>
+                        <span>Согласен на обработку персональных данных</span>
+                        <em class="field__error">Необходимо согласие</em>
+                    </label>
+
+                    <button type="submit" class="">Отправить заявку</button>
+                    <p class="form__success" id="form-success" hidden>✓ Спасибо! Заявка отправлена, менеджер скоро свяжется с вами.</p>
+                </form>
+            </div>
+        </section>
+    </main>
+    
+    <!-- FOOTER -->
+    {% include 'footer.html' %}
+
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
